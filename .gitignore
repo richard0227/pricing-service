@@ -5,10 +5,9 @@ target/
 # IntelliJ
 .idea/
 *.iml
-out/
 
 # OS
 .DS_Store
 
 # Logs
-*.log
+*.log∫
