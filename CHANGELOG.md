@@ -4,6 +4,18 @@ All notable changes to this project are documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+### Changed
+
+### Fixed
+
+## [1.0.0] - 2026-02-03
+
+### Added
+
+- Technical exercise
+
 ## [0.0.1] - 2026-02-03
 
 ### Changed
