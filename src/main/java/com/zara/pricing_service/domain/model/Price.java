@@ -17,9 +17,4 @@ public record Price(
         Objects.requireNonNull(endDate, "endDate");
         Objects.requireNonNull(money, "money");
     }
-
-    public boolean appliesTo(LocalDateTime applicationDate) {
-        return (applicationDate.isEqual(startDate) || applicationDate.isAfter(startDate))
-                && (applicationDate.isEqual(endDate) || applicationDate.isBefore(endDate));
-    }
 }
