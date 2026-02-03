@@ -1,0 +1,17 @@
+ALTER TABLE prices
+    ADD COLUMN deleted BOOLEAN NOT NULL DEFAULT FALSE;
+ALTER TABLE prices
+    ADD COLUMN created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
+ALTER TABLE prices
+    ADD COLUMN updated_at TIMESTAMP;
+ALTER TABLE prices
+    ADD COLUMN created_by VARCHAR(100) NOT NULL DEFAULT 'system';
+ALTER TABLE prices
+    ADD COLUMN updated_by VARCHAR(100);
+ALTER TABLE prices
+    ADD COLUMN deleted_at TIMESTAMP;
+ALTER TABLE prices
+    ADD COLUMN deleted_by VARCHAR(100);
+
+CREATE INDEX idx_prices_deleted
+    ON prices (deleted);

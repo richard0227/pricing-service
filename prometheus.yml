@@ -1,0 +1,10 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: pricing-service
+    metrics_path: /actuator/prometheus
+    static_configs:
+      - targets:
+          - pricing-api-dev:8080
+          - pricing-api-prod:8080

@@ -17,10 +17,10 @@ import java.time.LocalDateTime;
 @RequestMapping("/api/v1/prices")
 public class PriceController {
 
-    private final GetApplicablePriceUseCase useCase;
+    private final GetApplicablePriceUseCase applicablePriceUseCase;
 
-    public PriceController(GetApplicablePriceUseCase useCase) {
-        this.useCase = useCase;
+    public PriceController(GetApplicablePriceUseCase applicablePriceUseCase) {
+        this.applicablePriceUseCase = applicablePriceUseCase;
     }
 
     @GetMapping
@@ -29,6 +29,7 @@ public class PriceController {
             @RequestParam @Min(1) long productId,
             @RequestParam @Min(1) long brandId
     ) {
-        return useCase.getApplicablePrice(new ApplicablePriceRequest(brandId, productId, applicationDate));
+        return applicablePriceUseCase.getApplicablePrice(
+                new ApplicablePriceRequest(brandId, productId, applicationDate));
     }
 }

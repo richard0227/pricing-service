@@ -1,5 +1,43 @@
 services:
-  pricing-api:
+  pricing-api-dev:
     build: .
+    profiles:
+      - dev
+    environment:
+      SPRING_PROFILES_ACTIVE: dev
+      JWT_SECRET: change-me-change-me-change-me-change-me
     ports:
       - "8080:8080"
+
+  pricing-api-prod:
+    build: .
+    profiles:
+      - prod
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      JWT_SECRET: ${JWT_SECRET}
+      SPRING_DATASOURCE_URL: ${SPRING_DATASOURCE_URL}
+      SPRING_DATASOURCE_USERNAME: ${SPRING_DATASOURCE_USERNAME}
+      SPRING_DATASOURCE_PASSWORD: ${SPRING_DATASOURCE_PASSWORD}
+    ports:
+      - "8080:8080"
+
+  prometheus:
+    image: prom/prometheus:v2.52.0
+    profiles:
+      - dev
+      - prod
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    ports:
+      - "9090:9090"
+
+  grafana:
+    image: grafana/grafana-oss:11.1.0
+    profiles:
+      - dev
+      - prod
+    ports:
+      - "3000:3000"
