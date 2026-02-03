@@ -6,6 +6,16 @@ All notable changes to this project are documented in this file.
 
 ## [0.0.1] - 2026-02-03
 
+### Changed
+
+- Removed client-side date filtering logic in ApplicablePriceSelector
+- Consolidated date range logic (`BETWEEN startDate AND endDate`) into database query
+- Delegated priority-based selection (`ORDER BY priority DESC`) to DB layer
+- Reduced memory usage by fetching only the highest-priority applicable price
+- Simplified service layer to single-responsibility: validate/throw or return result
+
+## [0.0.1] - 2026-02-03
+
 ### Added
 
 - JWT-based authentication with role-based authorization for the pricing endpoint.
